@@ -3,6 +3,7 @@ package co.com.sofka.crud.category;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,8 +14,8 @@ public class Category {
     @GeneratedValue
     Long id;
 
-    @NotNull
-    @Size(min = 2)
+    @NotNull(message = "You must provide a category")
+    @NotBlank(message = "You must provide a category")
     String name;
 
     public Long getId() {

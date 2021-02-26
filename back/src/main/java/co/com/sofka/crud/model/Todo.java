@@ -3,8 +3,8 @@ package co.com.sofka.crud.todo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Todo {
@@ -12,8 +12,8 @@ public class Todo {
     @GeneratedValue
     private Long id;
 
-    @NotNull
-    @Size(min = 2)
+    @NotBlank(message = "You must provide a todo")
+    @Pattern(regexp="[\\w]*$", message = "Special characters are not allowed.")
     private String name;
     private boolean completed;
     private String groupListId;

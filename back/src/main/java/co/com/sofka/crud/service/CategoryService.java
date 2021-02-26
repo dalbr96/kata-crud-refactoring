@@ -3,6 +3,8 @@ package co.com.sofka.crud.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+
 @Service
 public class CategoryService {
 
@@ -13,7 +15,7 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category save(Category category){
+    public Category save(@Valid Category category){
         return categoryRepository.save(category);
     }
 
