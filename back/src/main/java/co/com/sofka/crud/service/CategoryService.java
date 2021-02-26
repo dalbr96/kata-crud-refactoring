@@ -1,5 +1,7 @@
-package co.com.sofka.crud.category;
+package co.com.sofka.crud.service;
 
+import co.com.sofka.crud.model.Category;
+import co.com.sofka.crud.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
