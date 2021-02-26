@@ -14,7 +14,7 @@ public class Category {
     Long id;
 
     @NotNull
-    @Size(min = 1)
+    @Size(min = 2)
     String name;
 
     public Long getId() {
