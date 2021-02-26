@@ -63,18 +63,20 @@ const Form = () => {
       });
   }
 
-  return <form ref={formRef}>
-    <input
-      type="text"
-      name="name"
-      placeholder="¿Qué piensas hacer hoy?"
-      defaultValue={item.name}
-      onChange={(event) => {
+  return <form ref={formRef} className="row g-2 form-centered">
+    <div className="col-auto">
+      <input type="text" className="form-control" name="name" placeholder="¿Qué piensas hacer hoy?" defaultValue={item.name} onChange={(event) => {
         setState({ ...state, name: event.target.value })
-      }}  ></input>
-    {item.id && <button onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button onClick={onAdd}>Crear</button>}
+      }}>
+      </input>
+    </div>
+    <div className="col-auto">
+      {item.id && <button className="btn btn-secondary" onClick={onEdit}>Actualizar</button>}
+      {!item.id && <button className="btn btn-primary" onClick={onAdd}>Crear</button>}
+    </div>
   </form>
+
+
 }
 
 
@@ -125,8 +127,8 @@ const List = () => {
   const decorationDone = {
     textDecoration: 'line-through'
   };
-  return <div>
-    <table >
+  return <div className="centered ">
+    <table className="table table-striped">
       <thead>
         <tr>
           <td>ID</td>
@@ -140,8 +142,8 @@ const List = () => {
             <td>{todo.id}</td>
             <td>{todo.name}</td>
             <td><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></td>
-            <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
-            <td><button onClick={() => onEdit(todo)}>Editar</button></td>
+            <td><button className="btn btn-danger" onClick={() => onDelete(todo.id)}>Eliminar</button></td>
+            <td><button className="btn btn-primary" onClick={() => onEdit(todo)}>Editar</button></td>
           </tr>
         })}
       </tbody>
@@ -182,7 +184,7 @@ function reducer(state, action) {
     case 'add-item':
       const todoUp = state.todo.list;
       todoUp.push(action.item);
-      return { ...state, todo: {list: todoUp, item: {}} }
+      return { ...state, todo: { list: todoUp, item: {} } }
     default:
       return state;
   }
@@ -198,7 +200,7 @@ const StoreProvider = ({ children }) => {
 }
 
 function App() {
-  return <StoreProvider>
+  return <StoreProvider className="centered">
     <h3>To-Do List</h3>
     <Form />
     <List />
