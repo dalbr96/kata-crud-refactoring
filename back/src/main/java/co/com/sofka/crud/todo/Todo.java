@@ -3,12 +3,17 @@ package co.com.sofka.crud.todo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull
+    @Size(min = 2)
     private String name;
     private boolean completed;
     private String groupListId;
