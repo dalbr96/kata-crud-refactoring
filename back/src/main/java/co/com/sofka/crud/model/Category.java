@@ -1,11 +1,11 @@
 package co.com.sofka.crud.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -17,6 +17,9 @@ public class Category {
     @NotNull(message = "You must provide a category")
     @NotBlank(message = "You must provide a category")
     String name;
+
+    @OneToMany(mappedBy = "Category", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Todo> todos = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -32,5 +35,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Todo> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(List<Todo> todos) {
+        this.todos = todos;
     }
 }

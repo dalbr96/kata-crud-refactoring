@@ -3,6 +3,7 @@ package co.com.sofka.crud.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -16,14 +17,16 @@ public class Todo {
     @Pattern(regexp="[\\w]*$", message = "Special characters are not allowed.")
     private String name;
     private boolean completed;
-    private Long groupListId;
 
-    public Long getGroupListId() {
-        return groupListId;
+    @ManyToOne()
+    private Category Category;
+
+    public Category getCategory() {
+        return Category;
     }
 
-    public void setGroupListId(Long groupListId) {
-        this.groupListId = groupListId;
+    public void setCategory(Category category) {
+        this.Category = category;
     }
 
     public Long getId() {
@@ -49,4 +52,5 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
 }
