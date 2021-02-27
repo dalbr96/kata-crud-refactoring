@@ -16,8 +16,6 @@ public class TodoService {
 
     @Autowired
     private TodoRepository todoRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     public Iterable<Todo> list(){
         return todoRepository.findAll();
@@ -38,7 +36,7 @@ public class TodoService {
     public TodoDTO getDTO(Long id){
 
         Todo todo = get(id);
-        
+
         return Assembler.makeTodoDTO(todo);
     }
 

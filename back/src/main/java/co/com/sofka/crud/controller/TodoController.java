@@ -1,5 +1,6 @@
 package co.com.sofka.crud.controller;
 
+import co.com.sofka.crud.dto.TodoDTO;
 import co.com.sofka.crud.model.Todo;
 import co.com.sofka.crud.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,8 @@ public class TodoController {
     }
 
     @GetMapping(value = "api/{id}/todo")
-    public Todo get(@PathVariable("id") Long id){
-        return service.get(id);
+    public TodoDTO get(@PathVariable("id") Long id){
+        return service.getDTO(id);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
