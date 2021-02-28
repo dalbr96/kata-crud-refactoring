@@ -1,5 +1,6 @@
 package co.com.sofka.crud.controller;
 
+import co.com.sofka.crud.dto.CategoryDTO;
 import co.com.sofka.crud.dto.InterfazDTO;
 import co.com.sofka.crud.service.CategoryService;
 import co.com.sofka.crud.model.Category;
@@ -22,24 +23,24 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("api/categories")
-    public Iterable<Category> list(){
+    public Iterable<CategoryDTO> list(){
         return categoryService.list();
     }
 
     @GetMapping("api/{id}/category")
-    public Category get(@PathVariable Long id){
+    public CategoryDTO get(@PathVariable Long id){
         return categoryService.get(id);
     }
 
     @PostMapping("api/category")
-    public Category save(@Valid @RequestBody Category category){
-        return categoryService.save(category);
+    public CategoryDTO save(@Valid @RequestBody CategoryDTO categoryDTO){
+        return categoryService.save(categoryDTO);
     }
 
     @PutMapping("api/category")
-    public Category update(@Valid @RequestBody Category category){
-        if(category.getId() != null){
-            return categoryService.save(category);
+    public CategoryDTO update(@Valid @RequestBody CategoryDTO categoryDTO){
+        if(categoryDTO.getId() != null){
+            return categoryService.save(categoryDTO);
         }
         throw new RuntimeException("There is not id to update");
     }

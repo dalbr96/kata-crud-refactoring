@@ -1,6 +1,8 @@
 package co.com.sofka.crud.assembler;
 
+import co.com.sofka.crud.dto.CategoryDTO;
 import co.com.sofka.crud.dto.TodoDTO;
+import co.com.sofka.crud.model.Category;
 import co.com.sofka.crud.model.Todo;
 
 public class Assembler {
@@ -25,5 +27,25 @@ public class Assembler {
         todo.setCompleted(todoDTO.isCompleted());
 
         return todo;
+    }
+
+    public static CategoryDTO makeCategoryDTO(Category category){
+
+        CategoryDTO categoryDto = new CategoryDTO();
+
+        categoryDto.setName(category.getName());
+        categoryDto.setId(category.getId());
+
+        return categoryDto;
+    }
+
+    public static Category makeCategory(CategoryDTO categoryDTO){
+
+        Category category = new Category();
+
+        category.setId(categoryDTO.getId());
+        category.setName(categoryDTO.getName());
+
+        return category;
     }
 }
