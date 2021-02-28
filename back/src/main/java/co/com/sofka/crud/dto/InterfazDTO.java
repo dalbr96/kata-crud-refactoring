@@ -7,22 +7,22 @@ import java.util.List;
 
 public class InterfazDTO {
 
-    private Iterable<Todo> todos;
-    private Iterable<Category> categories;
+    private Iterable<TodoDTO> todos;
+    private Iterable<CategoryDTO> categories;
 
-    public Iterable<Todo> getTodos() {
+    public Iterable<TodoDTO> getTodos() {
         return todos;
     }
 
-    public void setTodos(Iterable<Todo> todos) {
+    public void setTodos(Iterable<TodoDTO> todos) {
         this.todos = todos;
     }
 
-    public Iterable<Category> getCategories() {
+    public Iterable<CategoryDTO> getCategories() {
         return categories;
     }
 
-    public void setCategories(Iterable<Category> categories) {
+    public void setCategories(Iterable<CategoryDTO> categories) {
         this.categories = categories;
     }
 }
