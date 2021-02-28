@@ -17,12 +17,32 @@ public class TodoService {
     @Autowired
     private TodoRepository todoRepository;
 
-    public Iterable<Todo> list(){
-        return todoRepository.findAll();
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    public Iterable<TodoDTO> list(){
+
+        Iterable<Todo> todos = todoRepository.findAll();
+
+        List<TodoDTO> todosDTO = new ArrayList<>();
+
+        for(Todo todo: todos){
+            todosDTO.add(Assembler.makeTodoDTO(todo));
+        }
+
+        return todosDTO;
     }
 
-    public Todo save(Todo todo){
-        return todoRepository.save(todo);
+    public TodoDTO save(TodoDTO todoDTO){
+
+        Todo todo = Assembler.makeTodo(todoDTO);
+        todo.setCategory(categoryRepository.findById(todoDTO.getCategoryId()).orElseThrow());
+
+        Todo todoCreado = todoRepository.save(todo);
+
+        TodoDTO TodoDTOCreado = Assembler.makeTodoDTO(todoCreado);
+
+        return TodoDTOCreado;
     }
 
     public void delete(Long id){
