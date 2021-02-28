@@ -1,5 +1,6 @@
 package co.com.sofka.crud.controller;
 
+import co.com.sofka.crud.dto.InterfazDTO;
 import co.com.sofka.crud.service.CategoryService;
 import co.com.sofka.crud.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class CategoryController {
     @DeleteMapping("api/{id}/category")
     public void delete(@PathVariable Long id){
         categoryService.delete(id);
+    }
+
+    @GetMapping("api/show-interfaz")
+    public InterfazDTO listInterfaz(){
+        return categoryService.listInterfaz();
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
