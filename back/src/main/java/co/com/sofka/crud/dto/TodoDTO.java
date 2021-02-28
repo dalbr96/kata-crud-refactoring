@@ -3,38 +3,11 @@ package co.com.sofka.crud.dto;
 
 public class TodoDTO {
 
-
-    private Long todoID;
-    private String todoName;
-    private boolean todoCompleted;
-
-
     private Long categoryId;
-    private String categoryName;
+    private String name;
+    private Long id;
+    private boolean completed;
 
-    public Long getTodoID() {
-        return todoID;
-    }
-
-    public void setTodoID(Long todoID) {
-        this.todoID = todoID;
-    }
-
-    public String getTodoName() {
-        return todoName;
-    }
-
-    public void setTodoName(String todoName) {
-        this.todoName = todoName;
-    }
-
-    public boolean isTodoCompleted() {
-        return todoCompleted;
-    }
-
-    public void setTodoCompleted(boolean todoCompleted) {
-        this.todoCompleted = todoCompleted;
-    }
 
     public Long getCategoryId() {
         return categoryId;
@@ -44,11 +17,27 @@ public class TodoDTO {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
