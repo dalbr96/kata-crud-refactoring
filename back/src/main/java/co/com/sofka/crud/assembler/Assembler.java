@@ -1,43 +1,29 @@
 package co.com.sofka.crud.assembler;
 
-import co.com.sofka.crud.dto.CategoryDTO;
 import co.com.sofka.crud.dto.TodoDTO;
-import co.com.sofka.crud.model.Category;
 import co.com.sofka.crud.model.Todo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Assembler {
 
-    public static TodoDTO makeTodoDTO (Todo todo){
+    public static TodoDTO makeTodoDTO(Todo todo) {
         TodoDTO todoDTO = new TodoDTO();
 
+        todoDTO.setName(todo.getName());
+        todoDTO.setId(todo.getId());
         todoDTO.setCategoryId(todo.getCategory().getId());
-        todoDTO.setCategoryName(todo.getCategory().getName());
-        todoDTO.setTodoID(todo.getId());
-        todoDTO.setTodoName(todo.getName());
-        todoDTO.setTodoCompleted(todo.isCompleted());
+        todoDTO.setCompleted(todo.isCompleted());
 
         return todoDTO;
     }
 
-    public static CategoryDTO makeCategoryDTO(Category category){
+    public static Todo makeTodo(TodoDTO todoDTO){
 
-        CategoryDTO categoryDTO = new CategoryDTO();
+        Todo todo = new Todo();
 
-        categoryDTO.setId(category.getId());
-        categoryDTO.setName(category.getName());
+        todo.setId(todoDTO.getId());
+        todo.setName(todoDTO.getName());
+        todo.setCompleted(todoDTO.isCompleted());
 
-        List<TodoDTO> todosDTO = new ArrayList<>();
-
-        for(Todo todo: category.getTodos()){
-
-            todosDTO.add(makeTodoDTO(todo));
-        }
-
-        categoryDTO.setTodos(todosDTO);
-
-        return categoryDTO;
+        return todo;
     }
 }
