@@ -20,19 +20,19 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping(value = "api/todos")
-    public Iterable<Todo> list(){
+    public Iterable<TodoDTO> list(){
         return service.list();
     }
     
     @PostMapping(value = "api/todo")
-    public Todo save(@Valid @RequestBody Todo todo){
-        return service.save(todo);
+    public TodoDTO save(@Valid @RequestBody TodoDTO todoDTO){
+        return service.save(todoDTO);
     }
 
     @PutMapping(value = "api/todo")
-    public Todo update(@Valid @RequestBody Todo todo){
-        if(todo.getId() != null){
-            return service.save(todo);
+    public TodoDTO update(@Valid @RequestBody TodoDTO todoDTO){
+        if(todoDTO.getId() != null){
+            return service.save(todoDTO);
         }
         throw new RuntimeException("No existe el id para actualziar");
     }
