@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Optional;
 
 @Entity
 public class Todo {
@@ -19,14 +20,14 @@ public class Todo {
     private boolean completed;
 
     @ManyToOne()
-    private Category Category;
+    private Category category;
 
     public Category getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(Category category) {
-        this.Category = category;
+        this.category = category;
     }
 
     public Long getId() {
