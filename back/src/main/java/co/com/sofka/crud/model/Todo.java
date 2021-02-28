@@ -14,7 +14,7 @@ public class Todo {
     private Long id;
 
     @NotBlank(message = "You must provide a todo")
-    @Pattern(regexp="[\\w]*$", message = "Special characters are not allowed.")
+    @Pattern(regexp="[\\w\\s,;.]*$", message = "Special characters are not allowed.")
     private String name;
     private boolean completed;
 
