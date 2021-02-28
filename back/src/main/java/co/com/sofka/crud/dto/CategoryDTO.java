@@ -10,7 +10,6 @@ public class CategoryDTO {
     private String name;
     private Long id;
 
-    List<TodoDTO> todos = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -28,11 +27,4 @@ public class CategoryDTO {
         this.id = id;
     }
 
-    public List<TodoDTO> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<TodoDTO> todos) {
-        this.todos = todos;
-    }
 }
