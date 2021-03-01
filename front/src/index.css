@@ -19,3 +19,11 @@ code {
 .form-centered {
   display: inline-block;
 }
+
+.category-div{
+  border: black;
+}
+
+.title{
+  font-size: 200%;
+}
