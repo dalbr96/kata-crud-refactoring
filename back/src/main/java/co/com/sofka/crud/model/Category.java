@@ -3,16 +3,17 @@ package co.com.sofka.crud.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Category {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotNull(message = "You must provide a category")
-    @NotBlank(message = "You must provide a category")
+    @NotBlank(message = "You must provide a todo")
+    @Pattern(regexp="[\\w\\s,.´]*$", message = "Special characters are not allowed.")
     String name;
 
 

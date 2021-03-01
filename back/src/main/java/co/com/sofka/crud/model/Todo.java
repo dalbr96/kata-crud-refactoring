@@ -11,7 +11,7 @@ import java.util.Optional;
 @Entity
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "You must provide a todo")
@@ -19,7 +19,7 @@ public class Todo {
     private String name;
     private boolean completed;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 
