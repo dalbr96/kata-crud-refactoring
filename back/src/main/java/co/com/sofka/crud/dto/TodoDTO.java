@@ -1,10 +1,17 @@
 package co.com.sofka.crud.dto;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class TodoDTO {
 
     private Long categoryId;
+
+    @NotBlank(message = "You must provide a todo")
+    @Pattern(regexp="[\\w\\s,.´]*$", message = "Special characters are not allowed.")
     private String name;
+
     private Long id;
     private boolean completed;
 
